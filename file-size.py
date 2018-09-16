@@ -58,6 +58,20 @@ def listFiles():
 		i += 1
 		print (i)
 
-listFiles()
+#listFiles()
 
 
+#### create directories in loop
+
+import os
+
+def createDirectories():
+	for i in range(0, 5):
+		try:
+		    if not os.path.exists('data'+str(i)):
+		        os.makedirs('data'+str(i))
+		        print("created dir : "+str(i) )
+		except OSError:
+		    print ("Error: Creating the directory!")
+
+createDirectories()
