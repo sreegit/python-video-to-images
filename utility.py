@@ -88,4 +88,33 @@ def readFile():
 
 	print(distros_dict["videoNumber"])
 
-readFile()
+#readFile()
+
+
+import cv2
+
+def allFrames():
+	vidcap = cv2.VideoCapture('/media/sks/All-Data/Camera-Hik-All/09122018-Sep/hiv00037.mp4')
+
+	# frameRate = vidcap.get(5)
+	# print(frameRate)
+
+	# frameId = vidcap.get(1)
+
+	# print(frameId)
+	sec = 1
+	print("going to calcuate Sec.. ")
+	vidcap.set(cv2.CAP_PROP_POS_MSEC, sec*5000)
+	print("calc done..")
+	success,image = vidcap.read()
+	count = 0
+	while success:
+	  cv2.imwrite("./data/frame%d.jpg" % count, image)     # save frame as JPEG file   
+
+	  vidcap.set(cv2.CAP_PROP_POS_MSEC, sec*5000)   
+	  success,image = vidcap.read()
+	  print('Read a new frame: ', success, count)
+	  count += 1
+	  sec += 1
+
+allFrames()

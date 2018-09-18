@@ -14,10 +14,11 @@ dirName = 'data'
 dirVidNum = dirName+str(videoNum)
 
 ####make necessary changes whenver there is a change in the video number (eg. from 9 to 10)
-videoFileName = 'hiv000'+str(videoNum) +'.mp4'
+videoFileName = 'hiv00'+str(videoNum) +'.mp4'
 inputVideo = videoPath+videoFileName
+print("video path set... ", inputVideo)
 cap = cv2.VideoCapture(inputVideo)
-
+print('video capturing... ')
 try:
     if not os.path.exists( dirVidNum ):
         os.makedirs( dirVidNum )
@@ -26,16 +27,21 @@ except OSError:
 
 def getFrame(sec):
     cap.set(cv2.CAP_PROP_POS_MSEC, sec*1000)
+    print("setting the Seconds...")
     hasFrames, frame = cap.read()
+    print("reading video hasFrames... ")
     #if ret:
-    name = './'+ dirVidNum +'/v'+str(videoNum)+'_image' + str(sec) + '.jpg'
+    name = './'+ dirVidNum +'/v'+str(videoNum)+'_' + str(sec) + '.jpg'
     print ('Creating... ' + name)
     if hasFrames:
+        print('going to Write..')
         cv2.imwrite(name, frame)
+        print('writing Done JPG...')
     return hasFrames
 sec = 0
 frameRate = 1
-
+startFrame = 564
+sec = sec+ startFrame
 success = getFrame(sec)
 while success:
     sec = sec + frameRate
@@ -47,4 +53,4 @@ while success:
 
 # When everything done, release the capture
 cap.release()
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows()
