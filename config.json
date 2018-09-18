@@ -1,4 +1,6 @@
 {
 	"videoNumber": "000",
-	"dirPath": "/media/sks/All-Data/Camera-Hik-All/09122018-Sep/"
+	"dirPath": "/media/sks/All-Data/Camera-Hik-All/09122018-Sep/",
+	"startingPoint": 0,
+	"videoNamePrefix" : "hiv00"
 }

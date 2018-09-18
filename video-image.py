@@ -9,12 +9,15 @@ videoNum = configData["videoNumber"]
 #provide the video path here
 videoPath = configData["dirPath"]
 # videoPath = '/media/sks/All-Data/Camera-Hik-All/09122018-Sep/'
+#from which frame/ time the capturing should start
+startFrame = configData["startingPoint"]
 
 dirName = 'data'
 dirVidNum = dirName+str(videoNum)
 
-####make necessary changes whenver there is a change in the video number (eg. from 9 to 10)
-videoFileName = 'hiv00'+str(videoNum) +'.mp4'
+####config video prefix is given here
+videoFileName = configData["videoNamePrefix"]+str(videoNum) +'.mp4'
+
 inputVideo = videoPath+videoFileName
 print("video path set... ", inputVideo)
 cap = cv2.VideoCapture(inputVideo)
@@ -40,7 +43,7 @@ def getFrame(sec):
     return hasFrames
 sec = 0
 frameRate = 1
-startFrame = 564
+
 sec = sec+ startFrame
 success = getFrame(sec)
 while success:
