@@ -8,7 +8,7 @@ with open('config.json', 'r') as f:
 videoNum = configData["videoNumber"]
 #provide the video path here
 videoPath = configData["dirPath"]
-# videoPath = '/media/sks/All-Data/Camera-Hik-All/09122018-Sep/'
+
 #from which frame/ time the capturing should start
 startFrame = configData["startingPoint"]
 
